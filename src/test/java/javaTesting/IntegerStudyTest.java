@@ -3,6 +3,7 @@ package javaTesting;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class IntegerStudyTest {
 
@@ -26,5 +27,7 @@ public class IntegerStudyTest {
         assertEquals("El nombre vuit val realment 8", 8, vuit.intValue());
 
         assertEquals("El nombre vuit val realment 8", 8, eight.intValue());
+
+        assertTrue(vuit == eight);
     }
 }
