@@ -17,4 +17,14 @@ public class IntegerStudyTest {
 
         assertEquals("El nombre vint val realment 20", 20, vint.intValue());
     }
+
+    @Test
+    public void integerComparationsStudy(){
+        Integer vuit = new Integer(8);
+        Integer eight = new Integer("8");
+
+        assertEquals("El nombre vuit val realment 8", 8, vuit.intValue());
+
+        assertEquals("El nombre vuit val realment 8", 8, eight.intValue());
+    }
 }
