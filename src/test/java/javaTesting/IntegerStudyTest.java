@@ -32,4 +32,17 @@ public class IntegerStudyTest {
 
         assertTrue(vuit.equals(eight));
     }
+
+    @Test
+    public void binaryStudy(){
+        Integer dos = new Integer(2);
+        Integer vint = new Integer("20");
+        Integer tretze = 13;
+
+        String tipusPersones = "Hi ha " + Integer.toBinaryString(dos) + " de persones: les que entenen binari i les que NO!";
+
+        assertEquals(tipusPersones, 2, dos.intValue());
+
+        // assertEquals("El nombre vint val realment 20", 20, vint.intValue());
+    }
 }
