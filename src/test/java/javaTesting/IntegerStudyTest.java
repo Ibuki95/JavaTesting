@@ -10,7 +10,8 @@ public class IntegerStudyTest {
     public void integerStudy(){
         Integer vuit = new Integer(8);
         Integer tretze = 13;
+        int esperat = 13;
 
-        assertEquals("El nombre tretze val realment tretze", 13, tretze.intValue());
+        assertEquals("El nombre tretze val realment tretze", esperat, tretze.intValue());
     }
 }
