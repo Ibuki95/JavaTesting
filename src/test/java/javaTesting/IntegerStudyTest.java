@@ -14,9 +14,13 @@ public class IntegerStudyTest {
         Integer tretze = 13;
         int esperat = 13;
 
+        int minim = -2147483648;
+
         assertEquals("El nombre tretze val realment tretze", esperat, tretze.intValue());
 
         assertEquals("El nombre vint val realment 20", 20, vint.intValue());
+
+        assertEquals("El valor mínim d'un int es -2147483648", minim, Integer.MIN_VALUE);
     }
 
     @Test
