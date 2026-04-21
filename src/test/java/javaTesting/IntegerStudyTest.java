@@ -28,6 +28,8 @@ public class IntegerStudyTest {
 
         assertEquals("El nombre vuit val realment 8", 8, eight.intValue());
 
-        assertTrue(vuit == eight);
+        // assertTrue(vuit == eight);
+
+        assertTrue(vuit.equals(eight));
     }
 }
