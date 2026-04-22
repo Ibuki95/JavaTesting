@@ -27,9 +27,9 @@ public class User {
     }
 
     public void setPassword(String password){
-        this.password = password;
+        this.password = PasswordUtils.hashedPassword(password, salt);
     }
-    public String getPassword(){
-        return password;
+    public boolean verifyPassword(String passwordEntered){
+        return PasswordUtils.verifyUserPassword(passwordEntered, salt, password);
     }
 }
