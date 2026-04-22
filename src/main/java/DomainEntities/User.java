@@ -9,4 +9,12 @@ public class User {
         name = "Tomeu";
         password = "secret";
     }
+
+    public String getName(){
+        return name;
+    }
+
+    public String getPassword(){
+        return password;
+    }
 }
