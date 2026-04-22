@@ -9,7 +9,7 @@ public class UserTest {
 
     @Test
     public void constructUserTest(){
-        User usuari = new User();
+        User usuari = new User("Tomeu", "secret");
 
         assertTrue(usuari != null);
 

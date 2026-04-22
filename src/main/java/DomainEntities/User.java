@@ -2,12 +2,16 @@ package DomainEntities;
 
 public class User {
 
-    public String name;
-    public String password;
+    private String name;
+    private String password;
 
     public User(){
-        name = "Tomeu";
-        password = "secret";
+        this("Tomeu", "secret");
+    }
+
+    public User(String name, String password){
+        this.name = name;
+        this.password = password;
     }
 
     public String getName(){
