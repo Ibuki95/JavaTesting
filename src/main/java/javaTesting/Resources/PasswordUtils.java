@@ -33,8 +33,9 @@ public class PasswordUtils {
 
         try {
            md = MessageDigest.getInstance("SHA-256");
-           md.update(password.getBytes());
-           result = md.digest().toString();
+           md.update((salt + password).getBytes());
+           // result = md.digest().toString();
+            result = new String(md.digest());
        } catch (NoSuchAlgorithmException nsae){
            System.out.println("Algoritme de hash erroni.");
            System.exit(1);

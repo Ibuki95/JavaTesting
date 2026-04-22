@@ -15,8 +15,10 @@ public class User {
 
     public User(String name, String password){
         this.name = name;
-        this.password = password; // forma insegura
+        // this.password = password; // forma insegura
         this.salt = PasswordUtils.genSalt();
+        // falta fer hash amb salt del password
+        this.password = PasswordUtils.hashedPassword(password, this.salt);
     }
 
     public void setName(String name){
