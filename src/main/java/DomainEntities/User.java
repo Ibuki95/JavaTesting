@@ -3,7 +3,9 @@ package DomainEntities;
 public class User {
 
     private String name;
-    private String password;
+    private String password; // password in hash mode and salted
+    private String salt; // van canviant a cada usuari
+    // password == Hash( password_real + salt )
 
     public User(){
         this("Tomeu", "secret");
