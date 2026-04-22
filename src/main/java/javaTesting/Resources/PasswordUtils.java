@@ -23,17 +23,27 @@ public class PasswordUtils {
         return new String(valor);
     }
 
-    public static String genSecurePassword(String password, String salt) throws NoSuchAlgorithmException {
+    public static String genSecurePassword(String password, String salt) {
         return hashedPassword(password, salt);
     }
 
-    public static String hashedPassword(String password, String salt) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
+    public static String hashedPassword(String password, String salt) {
+        MessageDigest md;
+        String result = "";
 
-        md.update(password.getBytes());
+        try {
+           md = MessageDigest.getInstance("SHA-256");
+           md.update(password.getBytes());
+           result = md.digest().toString();
+       } catch (NoSuchAlgorithmException nsae){
+           System.out.println("Algoritme de hash erroni.");
+           System.exit(1);
+       }
 
-        return (md.digest()).toString();
+        return result;
     }
 
-
+    public static boolean verifyUserPassword(String passwordEntered, String userSalt, String securePassword){
+        return securePassword.equals(hashedPassword(passwordEntered, userSalt));
+    }
 }
