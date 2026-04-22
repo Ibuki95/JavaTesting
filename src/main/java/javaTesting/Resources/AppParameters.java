@@ -23,7 +23,7 @@ public class AppParameters {
         // codi per reconfigurar l'App.
     }
 
-    public AppParameters getInstance(){
+    public static AppParameters getInstance(){
         if (instance == null){
             instance = new AppParameters();
         }
