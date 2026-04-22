@@ -1,5 +1,7 @@
 package javaTesting.Resources;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Random;
 
@@ -20,4 +22,18 @@ public class PasswordUtils {
 
         return new String(valor);
     }
+
+    public static String genSecurePassword(String password, String salt) throws NoSuchAlgorithmException {
+        return hashedPassword(password, salt);
+    }
+
+    public static String hashedPassword(String password, String salt) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+        md.update(password.getBytes());
+
+        return (md.digest()).toString();
+    }
+
+
 }
