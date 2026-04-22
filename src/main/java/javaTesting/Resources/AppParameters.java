@@ -11,7 +11,7 @@ public class AppParameters {
     // Implementar SINGELTON PATTERN
     private static AppParameters instance;
 
-    public AppParameters(){
+    private AppParameters(){
 
     }
 

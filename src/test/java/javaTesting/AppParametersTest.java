@@ -29,7 +29,7 @@ public class AppParametersTest {
     public void singeltonCorrectness(){
         AppParameters inst1 = AppParameters.getInstance();
 
-        AppParameters inst2 = new AppParameters(); // AppParameters.getInstance();
+        AppParameters inst2 = AppParameters.getInstance();
 
         Assert.assertTrue("Comprovació unicitat instaancia del singleton", (inst1 == inst2));
     }
