@@ -5,9 +5,8 @@ import javaTesting.Resources.PasswordUtils;
 public class User {
 
     private String name;
-    private String password; // password in hash mode and salted
-    private String salt; // van canviant a cada usuari
-    // password == Hash( password_real + salt )
+    private String password;
+    private String salt;
 
     public User(){
         this("Tomeu", "secret");
@@ -15,23 +14,24 @@ public class User {
 
     public User(String name, String password){
         this.name = name;
-        // this.password = password; // forma insegura
         this.salt = PasswordUtils.genSalt();
-        // falta fer hash amb salt del password
         this.password = PasswordUtils.hashedPassword(password, this.salt);
     }
 
     public void setName(String name){
         this.name = name;
     }
+
     public String getName(){
         return name;
     }
 
     public void setPassword(String password){
-        this.password = PasswordUtils.hashedPassword(password, salt);
+        this.salt = PasswordUtils.genSalt();
+        this.password = PasswordUtils.hashedPassword(password, this.salt);
     }
+
     public boolean verifyPassword(String passwordEntered){
-        return PasswordUtils.verifyUserPassword(passwordEntered, salt, password);
+        return PasswordUtils.verifyUserPassword(passwordEntered, this.salt, this.password);
     }
 }
