@@ -7,6 +7,7 @@ import java.security.InvalidParameterException;
 import java.util.Arrays;
 
 import static  org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 
 public class ExplorantJUnitTest {
     @Rule
@@ -81,5 +82,26 @@ public class ExplorantJUnitTest {
 
         Object obj = null;
         assertSame(obj, null);
+    }
+
+    @Test
+    public void assertThatAmbHamcrest(){
+        assertThat("Testetjant que 4 + 5 son 9", 4+ 5, is(9));
+
+        assertThat("false és false", false, equalTo(false));
+
+        assertThat(false, is(false));
+
+        assertThat("true és true", true, equalTo(true));
+
+        assertThat(true, is(true));
+
+        assertThat("Un String buit no és null", is(not(nullValue())));
+
+        assertThat("Això ès un text", containsString("un"));
+
+        assertThat("Això ès un text", endsWith("xt"));
+
+        assertThat("Això ès un text", startsWith("Ai"));
     }
 }
