@@ -46,4 +46,24 @@ public class ExceptionsTest {
 
         assertEquals("Edat == 18", text);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwIllegalArgumentExceptionTryCatchNullPointerTest(){
+        Integer edat = null;
+        String edatEnLletres = "";
+        String text;
+
+        try {
+            System.out.println("Passa 1 - Generam NullPointerException");
+            edatEnLletres = edat.toString();
+        } catch (NullPointerException npe){
+            System.out.println("Passa 2 - Capturam la NullPointerException");
+            System.out.println("Passa 3 - Anam a llançar una excepció");
+            throw new IllegalArgumentException("Excepció creada i llançada per jo");
+        } finally {
+            System.out.println("Passa final - Codi de tancament");
+        }
+
+
+    }
 }
