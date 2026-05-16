@@ -82,4 +82,24 @@ public class ExceptionsTest {
 
         }
     }
+
+    @Test
+    public void jugantAmbObjecteExcepcioTest(){
+        Integer edat = null;
+        String edatEnLletres;
+
+        try {
+            edatEnLletres = edat.toString();
+        } catch (NullPointerException npe){
+            edat = 18;
+            edatEnLletres = edat.toString();
+            System.out.println("Anam a jugar amb l'objecte excepció !!!!");
+
+            System.out.println(npe.getMessage());
+            System.out.println(npe.getStackTrace());
+            npe.printStackTrace();
+        }
+
+        assertEquals("" + 18, edatEnLletres);
+    }
 }
