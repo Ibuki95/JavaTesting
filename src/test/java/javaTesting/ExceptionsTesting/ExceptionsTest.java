@@ -28,4 +28,22 @@ public class ExceptionsTest {
 
         assertEquals("" + 18, edatEnLletres);
     }
+
+    @Test
+    public void tryCatchNullPointerTest(){
+        Integer edat = null;
+        String edatEnLletres = "";
+        String text;
+
+        try {
+            edatEnLletres = edat.toString();
+        } catch (NullPointerException npe){
+            edat = 18;
+            edatEnLletres = edat.toString();
+        } finally {
+            text = "Edat == " + edatEnLletres;
+        }
+
+        assertEquals("Edat == 18", text);
+    }
 }
