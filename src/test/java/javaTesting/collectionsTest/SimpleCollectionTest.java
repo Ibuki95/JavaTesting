@@ -101,6 +101,9 @@ public class SimpleCollectionTest {
 
         assertEquals(map.size(), 3);
 
+        assertTrue(map.containsKey("menus"));
+        assertTrue(map.containsValue("negre"));
+
         map.remove("dialeg");
 
         assertEquals(map.size(), 2);
@@ -118,5 +121,16 @@ public class SimpleCollectionTest {
         dies.add("dimecres");
         dies.add("dijous");
         dies.add("divendres");
+    }
+
+    @Test
+    public void provesSetTest(){
+        Set<String> dies = new HashSet<>();
+
+        dies.add("dilluns");
+        dies.add("dilluns");
+        dies.add("dilluns");
+
+        assertEquals(dies.size(), 1);
     }
 }
