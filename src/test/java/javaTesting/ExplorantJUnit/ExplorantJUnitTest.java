@@ -70,5 +70,16 @@ public class ExplorantJUnitTest {
         Arrays.sort(primers10);
 
         assertArrayEquals(finsA10, primers10);
+
+        assertNotNull("Un String buit NO és null", "");
+        assertNotNull("");
+
+        assertNotSame("Un String buit NO és null", null);
+        assertNotSame("", null);
+
+        assertNull("Només null és considerat null", null);
+
+        Object obj = null;
+        assertSame(obj, null);
     }
 }
