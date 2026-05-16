@@ -33,4 +33,15 @@ public class ArraysTest {
             assertTrue(numerals[i].compareTo(numerals[i+1]) < 0);
         }
     }
+
+    @Test
+    public void farcirArrayParcialment(){
+        int[] nums = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+        Arrays.fill(nums, 5, 10, -1);
+
+        for(int i = 5; i < nums.length; i++){
+            assertTrue(nums[i] == -1);
+        }
+    }
 }
