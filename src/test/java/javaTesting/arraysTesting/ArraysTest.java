@@ -44,4 +44,14 @@ public class ArraysTest {
             assertTrue(nums[i] == -1);
         }
     }
+
+    @Test
+    public void copiaRangMatriu(){
+        String[] dies = {"dilluns", "dimarts", "dimecres", "dijous", "divendres", "dissabte", "diumenge"};
+
+        String[] feiners = Arrays.copyOfRange(dies, 0, 5);
+
+        assertTrue(feiners.length == 5);
+        assertTrue(feiners[1].equals("dimarts"));
+    }
 }
