@@ -63,7 +63,23 @@ public class ExceptionsTest {
         } finally {
             System.out.println("Passa final - Codi de tancament");
         }
+    }
 
+    @Test(expected = NullPointerException.class)
+    public void excepcioErronia(){
+        Integer edat = null;
+        String edatEnLletres = "";
+        String text;
 
+        try {
+            System.out.println("Passa 1 - Generam NullPointerException");
+            edatEnLletres = edat.toString();
+            throw new IllegalArgumentException("Excepció creada i llançada per jo");
+        } catch (IllegalArgumentException e){
+            System.out.println("Passa 2 - Capturam la IllegalArgumentException");
+        } finally {
+            System.out.println("Passa final - Codi de tancament");
+
+        }
     }
 }
