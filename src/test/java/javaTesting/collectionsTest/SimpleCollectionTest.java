@@ -2,9 +2,7 @@ package javaTesting.collectionsTest;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -76,6 +74,21 @@ public class SimpleCollectionTest {
         assertEquals(3, diesFeinersSenars.size());
 
         assertFalse(diesFeinersSenars.contains("dissabte"));
+
+        calculDies.addAll(diesSetmana);
+
+        assertTrue(calculDies.containsAll(diesFeiners));
+        assertTrue(calculDies.containsAll(diesCapDeSetmana));
+
+        calculDies.clear();
+
+        assertTrue(calculDies.isEmpty());
+
+        calculDies.addAll(diesSetmana);
+
+        calculDies.removeAll(diesCapDeSetmana);
+
+        assertEquals(5, calculDies.size());
     }
 
     public void initDiesFeiners(List<String> dies){
