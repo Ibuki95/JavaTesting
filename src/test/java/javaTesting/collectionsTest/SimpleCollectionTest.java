@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class SimpleCollectionTest {
     @Test
@@ -30,13 +30,21 @@ public class SimpleCollectionTest {
 
     @Test
     public void diesSetmana(){
-        List<String> diesSetmana;
+        List<String> diesSetmana = new ArrayList<>();
         List<String> diesFeiners = new ArrayList<>();
-        List<String> diesCapDeSetmana;
+        List<String> diesCapDeSetmana = new ArrayList<>();
 
         initDiesFeiners(diesFeiners);
 
         assertTrue(diesFeiners.size() == 5);
+
+        assertEquals(0, diesSetmana.size());
+        assertFalse(diesSetmana.containsAll(diesFeiners));
+
+        diesSetmana.addAll(diesFeiners);
+
+        assertEquals(5, diesSetmana.size());
+        assertFalse(diesSetmana.containsAll(diesFeiners));
     }
 
     public void initDiesFeiners(List<String> dies){
