@@ -1,7 +1,6 @@
 package javaTesting.ExplorantJUnit;
 
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.ExpectedException;
 
 import java.security.InvalidParameterException;
@@ -29,5 +28,25 @@ public class ExplorantJUnitTest {
         expected.expectMessage("the");
 
         throw new IllegalArgumentException("the exception");
+    }
+
+    @BeforeClass
+    public static void executaUnCopPerClasseAbansDeQualsevolTest(){
+        System.out.println("Abans d'executar qualsevol test, un cop per classe");
+    }
+
+    @AfterClass
+    public static void executarUnCopDespresDeQualsevolTest(){
+        System.out.println("Després d'executar qualsevol test, un cop per classe");
+    }
+
+    @Before
+    public void executaAbansDeCadaTest(){
+        System.out.println("Abans d'executar qualsevol test, per a cada test !!!");
+    }
+
+    @After
+    public void executaDespresDeCadaTest(){
+        System.out.println("Després d'executar qualsevol test, per a cada test !!!");
     }
 }
