@@ -3,24 +3,16 @@ package javaTesting.Resources;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Random;
+import java.util.Base64;
 
 public class PasswordUtils {
-    private static final Random RANDOM = new SecureRandom();
-    private static final String ALPHABET = "0123456789ABCDEFG"; // això hauria de ser més complet
+    private static final SecureRandom RANDOM = new SecureRandom();
 
-    public static String genSalt(){
-        return genSalt(8);
-    }
+    public static String genSalt() {
+        byte[] salt = new byte[32];
+        RANDOM.nextBytes(salt);
 
-    public static String genSalt(int l){
-        StringBuilder valor = new StringBuilder(l);
-
-        for(int k = 0; k < l; k++){
-            valor.append(ALPHABET.charAt(RANDOM.nextInt(ALPHABET.length())));
-        }
-
-        return new String(valor);
+        return Base64.getEncoder().encodeToString(salt);
     }
 
     public static String genSecurePassword(String password, String salt) {
@@ -28,23 +20,24 @@ public class PasswordUtils {
     }
 
     public static String hashedPassword(String password, String salt) {
-        MessageDigest md;
-        String result = "";
-
         try {
-           md = MessageDigest.getInstance("SHA-256");
-           md.update((salt + password).getBytes());
-           // result = md.digest().toString();
-            result = new String(md.digest());
-       } catch (NoSuchAlgorithmException nsae){
-           System.out.println("Algoritme de hash erroni.");
-           System.exit(1);
-       }
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
 
-        return result;
+            md.update((salt + password).getBytes());
+            byte[] hashedBytes = md.digest();
+
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashedBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+
+        } catch (NoSuchAlgorithmException nsae) {
+            throw new RuntimeException("Algoritme de hash incorrecte.", nsae);
+        }
     }
 
-    public static boolean verifyUserPassword(String passwordEntered, String userSalt, String securePassword){
+    public static boolean verifyUserPassword(String passwordEntered, String userSalt, String securePassword) {
         return securePassword.equals(hashedPassword(passwordEntered, userSalt));
     }
 }
