@@ -91,6 +91,27 @@ public class SimpleCollectionTest {
         assertEquals(5, calculDies.size());
     }
 
+    @Test
+    public void provesAmbMapsTest(){
+        Map<String,String> map = new HashMap<>();
+
+        map.put("fons", "negre");
+        map.put("menus", "blau");
+        map.put("dialeg", "verd");
+
+        assertEquals(map.size(), 3);
+
+        map.remove("dialeg");
+
+        assertEquals(map.size(), 2);
+
+        map.remove("dialeg");
+
+        assertEquals(map.size(), 2);
+
+        assertEquals(map.get("fons"), "negre");
+    }
+
     public void initDiesFeiners(List<String> dies){
         dies.add("dilluns");
         dies.add("dimarts");
