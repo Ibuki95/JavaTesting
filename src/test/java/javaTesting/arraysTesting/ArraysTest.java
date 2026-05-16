@@ -53,5 +53,11 @@ public class ArraysTest {
 
         assertTrue(feiners.length == 5);
         assertTrue(feiners[1].equals("dimarts"));
+
+        String[] feinersEsclaus = Arrays.copyOfRange(feiners, 0, 7);
+
+        assertTrue(feinersEsclaus[0].equals("dilluns"));
+        assertEquals(feinersEsclaus[5], null);
+        assertEquals(feinersEsclaus[6], null);
     }
 }
