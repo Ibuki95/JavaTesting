@@ -22,4 +22,12 @@ public class ExplorantJUnitTest {
 
         throw new IllegalArgumentException();
     }
+
+    @Test
+    public void missatgeExcepcioTest(){
+        expected.expect(IllegalArgumentException.class);
+        expected.expectMessage("the");
+
+        throw new IllegalArgumentException("the exception");
+    }
 }
